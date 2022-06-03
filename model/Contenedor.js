@@ -1,9 +1,8 @@
 const fs = require("fs");
 
 class Contenedor {
-  constructor(nombreArchivo, productos = []) {
+  constructor(nombreArchivo) {
     this.nombreArchivo = nombreArchivo;
-    this.productos = productos;
   }
 
   save = async (object) => {
@@ -32,25 +31,6 @@ class Contenedor {
     } catch (error) {
       console.log(`Error al guardar el objeto: ${error}`);
     }
-  };
-
-  saveSocket = (object) => {
-    try {
-      if (this.productos.length === 0) {
-        object.id = 1;
-        this.productos.push(object);
-      } else {
-        const id = this.productos[this.productos.length - 1].id + 1;
-        object.id = id;
-        this.productos.push(object);
-      }
-    } catch (error) {
-      console.log(`Error al guardar el objeto: ${error}`);
-    }
-  };
-
-  getAllSocket = () => {
-    return this.productos;
   };
 
   getAll = async () => {
